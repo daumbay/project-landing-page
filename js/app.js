@@ -22,8 +22,9 @@
  * Define Global Variables
  * 
 */
-
-
+const nodeList = document.querySelectorAll("[data-nav]");
+const sections = [];
+const documentFragment = document.createDocumentFragment();
 /**
  * End Global Variables
  * Start Helper Functions
@@ -39,8 +40,16 @@
 */
 
 // build the nav
+for (let node of nodeList) {
+    sections.push(node.dataset.nav);
+}
 
-
+for (let section of sections) {
+    const li = document.createElement("li");
+    li.textContent = section;
+    documentFragment.appendChild(li);
+}
+document.querySelector("#navbar__list").appendChild(documentFragment);
 // Add class 'active' to section when near top of viewport
 
 
