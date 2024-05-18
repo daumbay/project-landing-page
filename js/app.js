@@ -24,6 +24,7 @@
 */
 const nodeList = document.querySelectorAll("[data-nav]");
 const sections = [];
+const sectionIds = [];
 const documentFragment = document.createDocumentFragment();
 /**
  * End Global Variables
@@ -42,13 +43,16 @@ const documentFragment = document.createDocumentFragment();
 // build the nav
 for (let node of nodeList) {
     sections.push(node.dataset.nav);
+    sectionIds.push("#" + node.id);
 }
 
-for (let section of sections) {
+for (let [index, section] of sections.entries()) {
     const li = document.createElement("li");
-    li.textContent = section;
+    const a = document.createElement("a");
+    a.textContent = section;
+    a.href = sectionIds[index];
+    li.appendChild(a);
     li.classList.add("menu__link");
-    li.style.display = "inline-block";
     documentFragment.appendChild(li);
 }
 document.querySelector("#navbar__list").appendChild(documentFragment);
