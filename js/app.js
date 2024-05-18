@@ -47,6 +47,8 @@ for (let node of nodeList) {
 for (let section of sections) {
     const li = document.createElement("li");
     li.textContent = section;
+    li.classList.add("menu__link");
+    li.style.display = "inline-block";
     documentFragment.appendChild(li);
 }
 document.querySelector("#navbar__list").appendChild(documentFragment);
