@@ -109,9 +109,17 @@ function scrollToSection (event) {
 // to below the fold after a 1s delay
 function hideNavBar () {
     if (window.scrollY > window.innerHeight) {
-        setTimeout(function () {
-            navBarList.classList.add("isHidden")
-        }, 1000);
+        navBarList.classList.add("isHidden");
+    }
+}
+
+// Show the navbar on mouse close to window top, else hide it
+function showNavBar (event) {
+    if (event.clientY <= 60) {
+        // Show the navbar on mouse over
+        navBarList.classList.remove("isHidden");
+    } else {
+        hideNavBar();
     }
 }
 /**
@@ -128,3 +136,5 @@ navBarList.addEventListener("click", scrollToSection);
 document.addEventListener("scroll", makeActive);
 // Hide navbar when not scrolling
 document.addEventListener("scrollend", hideNavBar);
+// Show navbar when pointer close to window top
+document.addEventListener("mousemove", showNavBar);

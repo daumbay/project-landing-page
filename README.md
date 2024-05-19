@@ -10,6 +10,7 @@ This brief project shows a landing page of a sample website. The aim of this pro
 - Active section shown with a **darker background** on the main page, 
 - Active section shown with *italicised* text on the navbar.
 - Navbar hides after user scrolls past below the fold and stops scrolling, otherwise stays visible.
+- Navbar is shown when pointer moves close to the window top, and is hidden when pointer moves away from the top.
 - The site is completely responsive and usable on all devices. 
 
 ## Dependencies
