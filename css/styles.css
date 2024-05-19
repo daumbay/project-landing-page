@@ -97,13 +97,9 @@ section {
 }
 
 .isActive {
-    font-style: italic;
+    background: #777;
 }
 
-.isHidden {
-    display: none;
-    transition: ease 0.3s all;
-}
 /* Header Styles */
 .page__header {
     background: #fff;
