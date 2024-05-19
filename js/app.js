@@ -22,10 +22,7 @@
  * Define Global Variables
  * 
 */
-const nodeList = document.querySelectorAll("[data-nav]");
-const sections = [];
-const sectionIds = [];
-const documentFragment = document.createDocumentFragment();
+
 /**
  * End Global Variables
  * Start Helper Functions
@@ -41,21 +38,28 @@ const documentFragment = document.createDocumentFragment();
 */
 
 // build the nav
-for (let node of nodeList) {
-    sections.push(node.dataset.nav);
-    sectionIds.push("#" + node.id);
-}
+function buildNavBar () {
+    const nodeList = document.querySelectorAll("section");
+    const sections = [];
+    const sectionIds = [];
+    const documentFragment = document.createDocumentFragment();
 
-for (let [index, section] of sections.entries()) {
-    const li = document.createElement("li");
-    const a = document.createElement("a");
-    a.textContent = section;
-    a.href = sectionIds[index];
-    li.appendChild(a);
-    li.classList.add("menu__link");
-    documentFragment.appendChild(li);
+    for (let node of nodeList) {
+        sections.push(node.dataset.nav);
+        sectionIds.push("#" + node.id);
+    }
+    
+    for (let [index, section] of sections.entries()) {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.textContent = section;
+        a.href = sectionIds[index];
+        li.appendChild(a);
+        li.classList.add("menu__link");
+        documentFragment.appendChild(li);
+    }
+    document.querySelector("#navbar__list").appendChild(documentFragment);    
 }
-document.querySelector("#navbar__list").appendChild(documentFragment);
 // Add class 'active' to section when near top of viewport
 
 
