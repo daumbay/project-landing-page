@@ -22,7 +22,8 @@
  * Define Global Variables
  * 
 */
-
+const nodeList = document.querySelectorAll("section");
+const navBarList = document.querySelector("#navbar__list");
 /**
  * End Global Variables
  * Start Helper Functions
@@ -38,8 +39,7 @@
 */
 
 // build the nav
-function buildNavBar () {
-    const nodeList = document.querySelectorAll("section");
+function buildNavBar (event) {
     const sections = [];
     const sectionIds = [];
     const documentFragment = document.createDocumentFragment();
@@ -58,13 +58,28 @@ function buildNavBar () {
         li.classList.add("menu__link");
         documentFragment.appendChild(li);
     }
-    document.querySelector("#navbar__list").appendChild(documentFragment);    
+    navBarList.appendChild(documentFragment);
 }
 // Add class 'active' to section when near top of viewport
-
+function makeActive (event) {
+    for (const [index, section] of nodeList.entries()) {
+        const box = section.getBoundingClientRect();
+        if (box.top <= 150 && box.bottom >= 150) {
+            section.classList.add("your-active-class");
+            navBarList.children[index].classList.add("isActive");
+        } else {
+            section.classList.remove("your-active-class");
+            navBarList.children[index].classList.remove("isActive");
+        }
+    }
+}
 
 // Scroll to anchor ID using scrollTO event
-
+function scrollToSection (event) {
+    event.preventDefault();
+    const element = document.querySelector(`[data-nav="${event.target.innerText}"]`);
+    element.scrollIntoView({behavior: "smooth"});
+}
 
 /**
  * End Main Functions
@@ -73,9 +88,9 @@ function buildNavBar () {
 */
 
 // Build menu 
-
+document.addEventListener("DOMContentLoaded", buildNavBar);
 // Scroll to section on link click
-
+navBarList.addEventListener("click", scrollToSection);
 // Set sections as active
-
+document.addEventListener("scroll", makeActive);
 
