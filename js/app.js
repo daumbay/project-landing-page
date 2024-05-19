@@ -91,6 +91,8 @@ function makeActive () {
             navBarList.children[index].classList.remove("isActive");
         }
     }
+    // Show the navbar on scroll
+    navBarList.classList.remove("isHidden");
 }
 
 // Scroll to anchor ID using scrollTO event
@@ -103,6 +105,15 @@ function scrollToSection (event) {
     element.scrollIntoView({behavior: "smooth"});
 }
 
+// Hide the navbar on stopping the scroll when user has scrolled
+// to below the fold after a 1s delay
+function hideNavBar () {
+    if (window.scrollY > window.innerHeight) {
+        setTimeout(function () {
+            navBarList.classList.add("isHidden")
+        }, 1000);
+    }
+}
 /**
  * End Main Functions
  * Begin Events
@@ -115,4 +126,5 @@ document.addEventListener("DOMContentLoaded", buildNavBar);
 navBarList.addEventListener("click", scrollToSection);
 // Set sections as active
 document.addEventListener("scroll", makeActive);
-
+// Hide navbar when not scrolling
+document.addEventListener("scrollend", hideNavBar);
