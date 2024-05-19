@@ -1,9 +1,23 @@
 # Landing Page Project
 
-## Instructions
+## About the project
+This brief project shows a landing page of a sample website. The aim of this project was to demonstrate the building of the navigation bar dynamically after the page has been loaded. All the code has been written in the `js/app.js` file with proper documentation. Some minor modifications have been made to the following files: 
+- `index.html`
+- `css/styles.css`
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+## Features
+- Navigation bar built dynamically post page load.
+- Active section shown with a **darker background** on the main page, 
+- Active section shown with *italicised* text on the navbar.
+- Navbar hides after user scrolls past below the fold and stops scrolling, otherwise stays visible.
+- The site is completely responsive and usable on all devices. 
 
-To get started, open `js/app.js` and start building out the app's functionality
+## Dependencies
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+The code does not depend on any packages and runs on normal javascript.
+
+## Usage
+The code runs best on the latest Google Chrome browser. 
+
+## License
+See `License.txt` for the license text.
